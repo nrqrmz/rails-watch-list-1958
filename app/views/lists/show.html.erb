@@ -1,0 +1,19 @@
+<div class="container bg-white p-4 mt-4 shadow">
+  <h1><%= @list.name %></h1>
+
+  <ul class="list-unstyled">
+    <% @list.bookmarks.each do |bookmark| %>
+      <li>
+        <%= bookmark.movie.title %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to 'back', lists_path, class: 'btn btn-primary' %>
+</div>
